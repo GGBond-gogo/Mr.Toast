@@ -411,6 +411,12 @@ def join_game():
         print(f"加入游戏错误: {str(e)}")  # 调试信息
         return jsonify({'error': f'加入游戏失败: {str(e)}'}), 500
 
+@app.route('/game/<game_id>')
+def game_room(game_id):
+    if game_id not in games:
+        return "房间不存在", 404
+    return render_template('game.html', game_id=game_id)
+
 @socketio.on('join_game')
 def on_join_game(data):
     game_id = data.get('game_id')
@@ -456,7 +462,7 @@ def on_join_game(data):
                     success, message = game['engine'].start_game(auto_start=True)
                     print(f"自动开始游戏结果: {success}, {message}")
                     if success:
-                        emit('auto_game_started', {
+                        socketio.emit('auto_game_started', {
                             'message': '检测到单人游戏，已自动添加AI玩家并开始游戏！'
                         }, room=game_id)
                 except Exception as e:

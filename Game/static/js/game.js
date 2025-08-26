@@ -52,14 +52,24 @@ class StockUndercoverGame {
         });
         
         // 监听阶段变化
-        this.socket.on('phase_change', (data) => {
-            this.showNotification(`游戏进入${this.getPhaseText(data.phase)}阶段`, 'info');
+        this.socket.on('phase_changed', (data) => {
+            this.showNotification(`进入${this.getPhaseText(data.phase)}阶段`, 'info');
+            // 你可以更新 phase、倒计时等
             this.updatePhaseUI(data.phase);
         });
         
         // 监听游戏结束
         this.socket.on('game_end', (data) => {
             this.showGameEndModal(data);
+        });
+        
+        // 监听游戏开始
+        this.socket.on('game_started', (data) => {
+            this.gameState = data;
+            this.updateUI();
+            this.showNotification('游戏开始！', 'success');
+            // 你可以根据 data.phase 决定显示哪个面板
+            this.updatePhaseUI(data.phase);
         });
     }
     
