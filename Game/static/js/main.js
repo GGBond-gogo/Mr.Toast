@@ -5,16 +5,6 @@ class GameLobby {
     }
     
     initializeUI() {
-        // 创建游戏按钮事件
-        document.getElementById('create-game-btn').addEventListener('click', () => {
-            this.createGame();
-        });
-        
-        // 加入游戏按钮事件
-        document.getElementById('join-game-btn').addEventListener('click', () => {
-            this.joinGame();
-        });
-        
         // 表单提交事件
         document.getElementById('create-game-form').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -28,7 +18,7 @@ class GameLobby {
     }
     
     async createGame() {
-        const playerName = document.getElementById('create-player-name').value.trim();
+        const playerName = document.getElementById('player-name').value.trim();
         const maxPlayers = parseInt(document.getElementById('max-players').value);
         
         if (!playerName) {

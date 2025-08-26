@@ -4,14 +4,20 @@ AI系统模块 - AI玩家行为和决策
 """
 
 import random
+import sys
+import os
 from typing import Dict, List, Optional, Any
 from datetime import datetime
 from enum import Enum
 
-# 注释掉相对导入
-# from .player import Player
-# from .ai_dialogue import AIDialogueSystem
-# from .ai_behavior_analyzer import AIBehaviorAnalyzer
+# 确保能够导入 Player 类
+try:
+    from .player import Player
+except ImportError:
+    # 如果相对导入失败，尝试绝对导入
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    sys.path.insert(0, current_dir)
+    from player import Player
 
 class AIPersonality:
     """AI性格类型"""
@@ -30,8 +36,9 @@ class AIPlayer(Player):
     def __init__(self, player_id: str, name: str, personality: AIPersonality):
         super().__init__(player_id, name, is_ai=True)
         self.personality = personality
-        self.dialogue_system = AIDialogueSystem(personality)
-        self.behavior_analyzer = AIBehaviorAnalyzer()
+        # 暂时注释掉这些依赖，避免循环导入
+        # self.dialogue_system = AIDialogueSystem(personality)
+        # self.behavior_analyzer = AIBehaviorAnalyzer()
         self.memory = []  # AI记忆
         self.suspicion_targets = {}  # 怀疑目标
         self.trust_targets = {}  # 信任目标

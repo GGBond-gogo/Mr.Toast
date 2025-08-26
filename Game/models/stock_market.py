@@ -5,7 +5,7 @@
 
 import random
 import math
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Optional
 from datetime import datetime, timedelta
 from enum import Enum
 
