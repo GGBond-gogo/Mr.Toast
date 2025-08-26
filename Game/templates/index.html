@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股市卧底游戏</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h1 class="display-4">股市卧底游戏</h1>
+                        <p class="lead">在股票投资中找出隐藏的卧底</p>
+                    </div>
+                    <div class="card-body">
+                        <div id="main-menu">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">创建游戏</h5>
+                                            <form id="create-game-form">
+                                                <div class="mb-3">
+                                                    <label for="player-name" class="form-label">玩家名称</label>
+                                                    <input type="text" class="form-control" id="player-name" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="max-players" class="form-label">最大玩家数</label>
+                                                    <select class="form-select" id="max-players">
+                                                        <option value="4">4人</option>
+                                                        <option value="5">5人</option>
+                                                        <option value="6" selected>6人</option>
+                                                        <option value="7">7人</option>
+                                                        <option value="8">8人</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary w-100">创建游戏</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">加入游戏</h5>
+                                            <form id="join-game-form">
+                                                <div class="mb-3">
+                                                    <label for="join-player-name" class="form-label">玩家名称</label>
+                                                    <input type="text" class="form-control" id="join-player-name" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="game-id" class="form-label">游戏ID</label>
+                                                    <input type="text" class="form-control" id="game-id" required>
+                                                </div>
+                                                <button type="submit" class="btn btn-success w-100">加入游戏</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="game-lobby" style="display: none;">
+                            <h3>游戏大厅</h3>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>玩家列表</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="players-list"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>游戏信息</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <p><strong>游戏ID:</strong> <span id="current-game-id"></span></p>
+                                            <p><strong>玩家数:</strong> <span id="player-count"></span></p>
+                                            <button id="start-game-btn" class="btn btn-warning w-100" style="display: none;">开始游戏</button>
+                                            <button id="add-ai-btn" class="btn btn-info w-100 mt-2">添加AI玩家</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

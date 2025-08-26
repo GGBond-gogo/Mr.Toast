@@ -1,0 +1,324 @@
+body {
+    background: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg-dark {
+    background: linear-gradient(45deg, #2c3e50, #34495e) !important;
+}
+
+.card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 8px;
+}
+
+.card-header {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    border-radius: 8px 8px 0 0 !important;
+    padding: 8px 12px;
+}
+
+.card-header h6 {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* 玩家状态样式 */
+.player-status {
+    padding: 8px;
+    margin: 4px 0;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    border-left: 4px solid #3498db;
+}
+
+.player-status.alive {
+    background: #d4edda;
+    border-left-color: #28a745;
+}
+
+.player-status.eliminated {
+    background: #f8d7da;
+    border-left-color: #dc3545;
+    opacity: 0.7;
+}
+
+.player-status.suspicious {
+    background: #fff3cd;
+    border-left-color: #ffc107;
+}
+
+/* 股票市场样式 */
+.stock-item {
+    padding: 6px;
+    margin: 3px 0;
+    background: white;
+    border-radius: 4px;
+    border-left: 3px solid #3498db;
+    font-size: 0.8rem;
+}
+
+.stock-item.up {
+    border-left-color: #28a745;
+    background: #d4edda;
+}
+
+.stock-item.down {
+    border-left-color: #dc3545;
+    background: #f8d7da;
+}
+
+.stock-price {
+    font-weight: bold;
+}
+
+.stock-change {
+    font-size: 0.7rem;
+}
+
+.stock-change.positive {
+    color: #28a745;
+}
+
+.stock-change.negative {
+    color: #dc3545;
+}
+
+/* 卡牌样式 */
+.card-item {
+    background: white;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 4px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.card-item:hover {
+    border-color: #3498db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card-item.common {
+    border-left: 4px solid #6c757d;
+}
+
+.card-item.rare {
+    border-left: 4px solid #007bff;
+}
+
+.card-item.epic {
+    border-left: 4px solid #6f42c1;
+}
+
+.card-item.legendary {
+    border-left: 4px solid #fd7e14;
+}
+
+.card-name {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.card-description {
+    font-size: 0.7rem;
+    color: #6c757d;
+}
+
+/* 聊天样式 */
+#chat-messages {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.chat-message {
+    margin: 4px 0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.chat-message.system {
+    background: #e9ecef;
+    color: #495057;
+    font-style: italic;
+}
+
+.chat-message.player {
+    background: #e3f2fd;
+}
+
+.chat-message.ai {
+    background: #f3e5f5;
+}
+
+.chat-message.undercover {
+    background: #ffebee;
+}
+
+.message-author {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.message-time {
+    font-size: 0.7rem;
+    color: #6c757d;
+    float: right;
+}
+
+/* 投票样式 */
+.vote-option {
+    padding: 8px;
+    margin: 4px 0;
+    background: white;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vote-option:hover {
+    border-color: #3498db;
+    background: #e3f2fd;
+}
+
+.vote-option.selected {
+    border-color: #28a745;
+    background: #d4edda;
+}
+
+/* 进度条样式 */
+.progress {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.progress-bar {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    transition: width 1s ease;
+}
+
+/* 阶段指示器 */
+.phase-investment {
+    color: #28a745;
+}
+
+.phase-discussion {
+    color: #ffc107;
+}
+
+.phase-voting {
+    color: #dc3545;
+}
+
+/* 投资组合样式 */
+.portfolio-item {
+    padding: 6px;
+    margin: 3px 0;
+    background: white;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    border-left: 3px solid #3498db;
+}
+
+.portfolio-profit {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.portfolio-loss {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* 游戏日志样式 */
+#game-log {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.log-entry {
+    margin: 2px 0;
+    padding: 2px 4px;
+    font-size: 0.75rem;
+    border-radius: 3px;
+}
+
+.log-entry.investment {
+    background: #e8f5e8;
+    color: #155724;
+}
+
+.log-entry.card {
+    background: #e2e3f1;
+    color: #383d41;
+}
+
+.log-entry.vote {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.log-entry.elimination {
+    background: #f5c6cb;
+    color: #721c24;
+    font-weight: bold;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .col-md-3, .col-md-6 {
+        margin-bottom: 15px;
+    }
+    
+    .card-body {
+        padding: 8px;
+    }
+    
+    #chat-messages {
+        height: 200px;
+    }
+    
+    .player-status, .stock-item, .card-item {
+        font-size: 0.75rem;
+    }
+}
+
+/* 动画效果 */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
