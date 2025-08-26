@@ -35,32 +35,27 @@
             <div class="col-md-3">
                 <!-- 玩家列表 -->
                 <div class="card mt-3">
-                    <div class="card-header">
-                        <h6>玩家列表</h6>
-                    </div>
-                    <div class="card-body p-2">
-                        <div id="players-status"></div>
-                    </div>
+                    <div class="card-header">玩家列表</div>
+                    <div class="card-body p-2" id="player-list"></div>
                 </div>
 
                 <!-- 股票市场 -->
                 <div class="card mt-3">
-                    <div class="card-header">
-                        <h6>股票市场</h6>
-                    </div>
-                    <div class="card-body p-2">
-                        <div id="stock-market"></div>
-                    </div>
+                    <div class="card-header">股票市场</div>
+                    <div class="card-body p-2" id="stock-list"></div>
+                    <select id="stock-select" class="form-select mt-2"></select>
                 </div>
 
                 <!-- 我的投资组合 -->
                 <div class="card mt-3">
-                    <div class="card-header">
-                        <h6>我的投资组合</h6>
-                    </div>
-                    <div class="card-body p-2">
-                        <div id="my-portfolio"></div>
-                    </div>
+                    <div class="card-header">我的投资组合</div>
+                    <div class="card-body p-2" id="player-holdings"></div>
+                </div>
+
+                <!-- 我的卡牌 -->
+                <div class="card mt-3">
+                    <div class="card-header">我的卡牌</div>
+                    <div class="card-body p-2" id="player-cards"></div>
                 </div>
             </div>
 
@@ -101,39 +96,23 @@
                     <div class="card-header">
                         <h6>游戏聊天</h6>
                     </div>
-                    <div class="card-body">
-                        <div id="chat-messages" style="height: 300px; overflow-y: auto;"></div>
-                        <div class="input-group mt-2">
-                            <input type="text" class="form-control" id="chat-input" placeholder="输入消息...">
-                            <button class="btn btn-outline-secondary" id="send-message-btn">发送</button>
-                        </div>
+                    <div class="card-body p-2" id="messages" style="height:200px;overflow-y:auto;"></div>
+                    <div class="card-footer">
+                        <input id="message-input" class="form-control" placeholder="输入消息...">
+                        <button id="send-message-btn" class="btn btn-primary mt-2">发送</button>
                     </div>
                 </div>
 
                 <!-- 投票面板 -->
                 <div id="voting-panel" class="card mt-3" style="display: none;">
-                    <div class="card-header">
-                        <h6>投票淘汰</h6>
-                    </div>
-                    <div class="card-body">
-                        <p>选择你认为是卧底的玩家：</p>
-                        <div id="vote-options"></div>
-                    </div>
+                    <div class="card-header">投票淘汰</div>
+                    <div class="card-body" id="vote-results"></div>
+                    <button id="vote-btn" class="btn btn-primary mt-2">投票</button>
                 </div>
             </div>
 
             <!-- 右侧面板 - 卡牌和操作 -->
             <div class="col-md-3">
-                <!-- 我的卡牌 -->
-                <div class="card mt-3">
-                    <div class="card-header">
-                        <h6>我的卡牌</h6>
-                    </div>
-                    <div class="card-body p-2">
-                        <div id="my-cards"></div>
-                    </div>
-                </div>
-
                 <!-- 游戏日志 -->
                 <div class="card mt-3">
                     <div class="card-header">
@@ -200,5 +179,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
     <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+    <script>
+const gameId = "{{ game_id }}";
+let playerName = localStorage.getItem('player_name');
+if (!playerName) {
+    playerName = prompt("请输入你的昵称：");
+    localStorage.setItem('player_name', playerName);
+}
+const socket = io();
+// 加入房间
+socket.emit('join_game', {
+    game_id: gameId,
+    player_name: playerName
+});
+</script>
 </body>
 </html>
